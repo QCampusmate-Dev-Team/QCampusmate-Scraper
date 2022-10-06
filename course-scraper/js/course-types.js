@@ -33,8 +33,6 @@ var Day;
     Day["Saturday"] = "\u571F";
     Day["Sunday"] = "\u65E5";
 })(Day || (Day = {}));
-////////////////////CourseMain////////////////////
-///////////
 class CourseMain {
     constructor(id) {
         this.id = id;
@@ -199,8 +197,6 @@ class CourseMain {
 }
 exports.CourseMain = CourseMain;
 CourseMain.subjectCategoryMap = numberLinkCodeToCategory;
-////////////////////CourseDetail////////////////////
-///////////
 class CourseDetailPartial {
     toString() {
         return JSON.stringify(this);
@@ -457,7 +453,6 @@ class CourseContactsDetail extends CourseDetailPartial {
 }
 exports.CourseContactsDetail = CourseContactsDetail;
 ////////////////////COURSE////////////////////
-///////////
 class Course {
     constructor(courseMain, detail) {
         this.main = courseMain;
@@ -471,8 +466,8 @@ class Course {
     }
 }
 exports.Course = Course;
-/////////////////UTILITIES////////////////////
-///////////
+////////////////////////////////
+// Utilities
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }

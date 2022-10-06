@@ -75,6 +75,8 @@ enum Day {
 
 type CoursePartialConstrutorType<T> = new () => T;
 
+////////////////////CourseMain////////////////////
+///////////
 export class CourseMain {
 	id: number | undefined; //講義コード
 	name: string | undefined; //科目名称。講義科目名
@@ -274,6 +276,8 @@ export class CourseMain {
 }
 
 
+////////////////////CourseDetail////////////////////
+///////////
 abstract class CourseDetailPartial {
   abstract setKV<T>(key: string, ctx:  cheerio.BasicAcceptedElems<cheerio.AnyNode>, $: cheerio.CheerioAPI):void;
 
@@ -370,7 +374,8 @@ export type DetailPartialConstructors =
                                   CoursePartialConstrutorType<CourseObjectiveDetail> | 
                                   CoursePartialConstrutorType<CourseImplementationDetail> |
                                   CoursePartialConstrutorType<CourseGradingDetail> |
-                                  CoursePartialConstrutorType<CourseContactsDetail>;
+                                  CoursePartialConstrutorType<CourseContactsDetail> | 
+                                  undefined;
 
 export class CourseDetail {
   courseObjectiveDetail: CourseObjectiveDetail | undefined;
@@ -626,6 +631,7 @@ export class CourseContactsDetail extends CourseDetailPartial{
 }
 
 ////////////////////COURSE////////////////////
+///////////
 export class Course {
 	main: CourseMain; // Store every field seperately
 	detail: Syllabus | CourseDetail | undefined; // Store as JSON in DB 
@@ -646,8 +652,8 @@ export class Course {
   }
 }
 
-////////////////////////////////
-// Utilities
+/////////////////UTILITIES////////////////////
+///////////
 function isNumeric(n): boolean {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }

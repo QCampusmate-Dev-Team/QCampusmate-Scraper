@@ -1,0 +1,241 @@
+id,school_id,subjectname,subjectcode,unit,category,target_year,eleccompul
+1,11,Design Pitching Skills,2713J,1,コース専門科目　Course Specialized Subjects,,1
+2,11,Global Design Innovations,2712E,1,コース専門科目　Course Specialized Subjects,,1
+3,11,Intellectual Property Rights : Global Perspective,2714E,1,コース専門科目　Course Specialized Subjects,,1
+4,11,Start-ups and Global Disruptors,2711E,1,コース専門科目　Course Specialized Subjects,,1
+5,11,Webコンテンツデザイン演習,3432J,2,専攻教育科目　Specialized Education,,1
+6,11,アニメーション表現,2212J,2,コース専門科目　Course Specialized Subjects,,1
+7,11,アート・デザイン・ライティング演習,2531J,1,コース専門科目　Course Specialized Subjects,,1
+8,11,インタラクションデザイン,2313J,2,コース専門科目　Course Specialized Subjects,,1
+9,11,インタラクティブインターフェース演習,3412W,2,専攻教育科目　Specialized Education,,1
+10,11,インターンシップ（学部）,3041J,2,専攻教育科目　Specialized Education,,1
+11,11,インダストリアルデザイン基礎Ⅰ,1111J,1,コース基礎科目　Course Fundamental Subjects,,1
+12,11,インダストリアルデザイン基礎Ⅱ,1211J,1,コース基礎科目　Course Fundamental Subjects,,1
+13,11,ウェブサービスデザイン,3331J,2,コース専門科目　Course Specialized Subjects,,1
+14,11,クリティカルシンキング,1511J,1,コース基礎科目　Course Fundamental Subjects,,3
+15,11,グラフィックスアルゴリズム演習,3622J,2,専攻教育科目　Specialized Education,,1
+16,11,グラフィックデザイン,2214J,1,コース専門科目　Course Specialized Subjects,,1
+17,11,グラフィックデザイン演習,3811J,2,専攻教育科目　Specialized Education,,1
+18,11,ゲームデザイン,2213J,2,コース専門科目　Course Specialized Subjects,,1
+19,11,コミュニケーションデザイン演習Ⅰ,2521J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+20,11,コンセプト論,1111J,1,コース基礎科目　Course Fundamental Subjects,,3
+21,11,コンテンツデザイン演習Ⅰ,2571J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+22,11,コンテンツデザイン演習Ⅱ,2571J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+23,11,コンテンツ工学,2322J,2,コース専門科目　Course Specialized Subjects,,1
+24,11,コンピュータアニメーション演習,3421J,2,専攻教育科目　Specialized Education,,1
+25,11,コンピュータグラフィックス,2323J,2,コース専門科目　Course Specialized Subjects,,1
+26,11,コース融合プロジェクトA,2051J,4,融合プロジェクト・プラットフォーム　Integrative Projects/Platforms,,1
+27,11,コース融合プロジェクトB,2052J,4,融合プロジェクト・プラットフォーム　Integrative Projects/Platforms,,1
+28,11,サービスデザイン実践論,2222J,1,コース専門科目　Course Specialized Subjects,,1
+29,11,サービスデザイン概論,2221J,1,コース基礎科目　Course Fundamental Subjects,,3
+30,11,タイポグラフィックデザイン,2221J,1,コース専門科目　Course Specialized Subjects,,1
+31,11,ディジタル信号処理,2117J,2,コース専門科目　Course Specialized Subjects,,3
+32,11,ディジタル信号処理演習（2019年度以前入学者対象）,3831J,2,専攻教育科目　Specialized Education,,1
+33,11,ディジタル信号処理演習（2020年度入学者対象）,2342J,2,コース専門科目　Course Specialized Subjects,,1
+34,11,デザインシステム論・演習,3313J,3,専攻教育科目　Specialized Education,,1
+35,11,デザインスケッチ,1111J,1,コース基礎科目　Course Fundamental Subjects,,3
+36,11,デザインストラテジー基礎（学部3年生対象）,4041J,2,専攻教育科目　Specialized Education,,1
+37,11,デザインストラテジー基礎（学部4年生対象）,4031J,2,専攻教育科目　Specialized Education,,1
+38,11,デザインリテラシー基礎,1011J,1,デザインリテラシー科目　Design Literacy Subjects,,3
+39,11,デザイン・ケーススタディⅠ,1041J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+40,11,デザイン哲学,2511J,1,コース専門科目　Course Specialized Subjects,,1
+41,11,デザイン思考法（2019年度以前入学者対象）,2351J,2,専攻教育科目　Specialized Education,,1
+42,11,デザイン材料論・演習,2111J,1,コース専門科目　Course Specialized Subjects,,1
+43,11,デザイン編集論・演習,2111W,1,コース専門科目　Course Specialized Subjects,,1
+44,11,デザイン美学,2131J,1,コース専門科目　Course Specialized Subjects,,1
+45,11,デザイン要素論・演習,2111J,1,コース専門科目　Course Specialized Subjects,,1
+46,11,デジタルモデリング演習,3523J,2,専攻教育科目　Specialized Education,,1
+47,11,データ解析,2141J,1,コース専門科目　Course Specialized Subjects,,1
+48,11,バーチャルリアリティ,3422J,2,専攻教育科目　Specialized Education,,1
+49,11,ビジネスデザイン論・演習Ⅰ,2221J,2,コース専門科目　Course Specialized Subjects,,1
+50,11,ビジネスデザイン論・演習Ⅱ,2222J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+51,11,フィールドワーク演習,3222W,2,専攻教育科目　Specialized Education,,1
+52,11,フィールド調査論・演習,2311J,4,コース演習科目 (PBL)　Course Seminar Subjects,,1
+53,11,プラットフォーム演習 A,2611W,4,コース演習科目 (PBL)　Course Seminar Subjects,,1
+54,11,プラットフォーム演習 C,3612J,4,コース演習科目 (PBL)　Course Seminar Subjects,,1
+55,11,プログラミング基礎,1351J,1,コース基礎科目　Course Fundamental Subjects,,3
+56,11,プログラミング設計,2341J,1,コース専門科目　Course Specialized Subjects,,1
+57,11,プロダクトデザイン実践論,2232J,1,コース専門科目　Course Specialized Subjects,,1
+58,11,プロダクトデザイン実践論・演習Ⅰ,2231J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+59,11,プロダクトデザイン実践論・演習Ⅱ,2232J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+60,11,プロダクトデザイン概論,2231J,1,コース基礎科目　Course Fundamental Subjects,,3
+61,11,ポートフォリオマネジメント,3871W,2,専攻教育科目　Specialized Education,,1
+62,11,メカニクスデザイン,2311J,2,コース専門科目　Course Specialized Subjects,,1
+63,11,メディアサイエンス演習Ⅰ,2541J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+64,11,メディアデザイン概論Ⅰ,1111J,1,コース基礎科目　Course Fundamental Subjects,,1
+65,11,メディアデザイン概論Ⅱ,1412J,1,コース基礎科目　Course Fundamental Subjects,,1
+66,11,メディアデザイン概論Ⅲ,2113J,1,コース基礎科目　Course Fundamental Subjects,,3
+67,11,メディアプログラミング,2131J,2,コース基礎科目　Course Fundamental Subjects,,3
+68,11,メディア情報処理（2019年度以前入学者対象）,3521J,2,専攻教育科目　Specialized Education,,1
+69,11,メディア情報処理（2020年度入学者対象）,2321J,2,コース専門科目　Course Specialized Subjects,,1
+70,11,メディア環境計画,3411J,2,専攻教育科目　Specialized Education,,1
+71,11,メディア表現基礎,2121J,2,コース基礎科目　Course Fundamental Subjects,,3
+72,11,ライフスケープデザイン実践論,2242J,1,コース専門科目　Course Specialized Subjects,,1
+73,11,ライフスケープデザイン概論,2241J,1,コース基礎科目　Course Fundamental Subjects,,3
+74,11,ライフスケープデザイン論・演習Ⅰ,2241J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+75,11,ライフスケープデザイン論・演習Ⅱ,2242J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+76,11,ランドスケーププロジェクト,3491W,4,専攻教育科目　Specialized Education,,3
+77,11,主観評価法,3011J,2,専攻教育科目　Specialized Education,,1
+78,11,人工生命デザイン,3531J,2,専攻教育科目　Specialized Education,,1
+79,11,人間工学概論,2111J,2,コース基礎科目　Course Fundamental Subjects,,3
+80,11,人間工学演習Ⅰ,2121J,4,コース演習科目 (PBL)　Course Seminar Subjects,,1
+81,11,人間工学研究法,3132J,2,専攻教育科目　Specialized Education,,1
+82,11,人間工学設計法,3131J,2,専攻教育科目　Specialized Education,,3
+83,11,人間工学設計演習,3151J,2,専攻教育科目　Specialized Education,,1
+84,11,人間科学とデザイン,2033J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+85,11,先端情報生命科学Ⅰ,3361W,1,コース専門科目　Course Specialized Subjects,,1
+86,11,先端情報生命科学Ⅱ,3362W,1,コース専門科目　Course Specialized Subjects,,1
+87,11,共通課題PBL演習A,1611W,4,コース演習科目 (PBL)　Course Seminar Subjects,,1
+88,11,卒業研究Ⅰ,4911W,2,専攻教育科目　Specialized Education,,3
+89,11,卒業研究Ⅱ,4912J,4,専攻教育科目　Specialized Education,,3
+90,11,収音音響構成,2231J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+91,11,基礎造形Ⅰ,2021J,1,デザインリテラシー科目　Design Literacy Subjects,,3
+92,11,基礎造形Ⅱ,2022J,1,デザインリテラシー科目　Design Literacy Subjects,,3
+93,11,基礎造形Ⅲ,2023J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+94,11,基礎造形Ⅳ,2024J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+95,11,室内音響学,3511J,2,専攻教育科目　Specialized Education,,1
+96,11,工業設計プロジェクト研究,4811W,2,専攻教育科目　Specialized Education,,1
+97,11,建築デザイン計画論,2311J,2,コース専門科目　Course Specialized Subjects,,1
+98,11,建築法規,2361J,1,コース専門科目　Course Specialized Subjects,,1
+99,11,建築生産,3392J,2,専攻教育科目　Specialized Education,,1
+100,11,建築空間設計論,3351J,2,専攻教育科目　Specialized Education,,1
+101,11,心理学的思考法演習,3121J,2,専攻教育科目　Specialized Education,,1
+102,11,応用時系列解析,3531J,2,専攻教育科目　Specialized Education,,1
+103,11,応用音楽学,3321W,2,専攻教育科目　Specialized Education,,1
+104,11,応用音楽表現演習Ⅰ,2222J,1,コース専門科目　Course Specialized Subjects,,1
+105,11,応用音楽表現演習Ⅱ,2122J,1,コース専門科目　Course Specialized Subjects,,1
+106,11,応用音響理論,2331J,2,コース専門科目　Course Specialized Subjects,,1
+107,11,情報デザイン,2222J,2,コース専門科目　Course Specialized Subjects,,1
+108,11,情報理論,3131J,2,専攻教育科目　Specialized Education,,1
+109,11,情報科学Ⅰ,1311W,1,コース基礎科目　Course Fundamental Subjects,,3
+110,11,情報科学Ⅱ,2312W,1,コース専門科目　Course Specialized Subjects,,1
+111,11,感性科学（2019年度以前入学者対象）,3121Ｊ,2,専攻教育科目　Specialized Education,,1
+112,11,感性科学（2020年度入学者対象）,2151J,1,コース専門科目　Course Specialized Subjects,,1
+113,11,拡張映像表現スタジオ演習,3821J,2,専攻教育科目　Specialized Education,,1
+114,11,文化とデザイン,2031J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+115,11,映像表現,2211J,2,コース専門科目　Course Specialized Subjects,,1
+116,11,未来デザイン方法論,2621J,1,コース専門科目　Course Specialized Subjects,,1
+117,11,未来構想デザイン概論,1621J,1,コース基礎科目　Course Fundamental Subjects,,1
+118,11,楽器・音響機器論,3531J,2,専攻教育科目　Specialized Education,,1
+119,11,構法設計論,3391J,2,専攻教育科目　Specialized Education,,1
+120,11,構造システム論,3551J,2,専攻教育科目　Specialized Education,,1
+121,11,構造理論Ⅰ,2511J,1,コース専門科目　Course Specialized Subjects,,1
+122,11,構造理論Ⅱ,2512J,1,コース専門科目　Course Specialized Subjects,,1
+123,11,機械学習,3061J,2,専攻教育科目　Specialized Education,,1
+124,11,機能デザイン論,3521J,2,専攻教育科目　Specialized Education,,1
+125,11,機能工学デザイン演習,3543J,2,専攻教育科目　Specialized Education,,1
+126,11,機能工学基礎,3524J,2,専攻教育科目　Specialized Education,,1
+127,11,歴史環境実習,3802W,1,専攻教育科目　Specialized Education,,1
+128,11,歴史環境設計論,3362J,2,専攻教育科目　Specialized Education,,1
+129,11,比較映画・演劇文化演習,3213W,2,専攻教育科目　Specialized Education,,1
+130,11,比較音楽理論,2321J,2,コース専門科目　Course Specialized Subjects,,1
+131,11,演劇文化論,2412J,2,コース専門科目　Course Specialized Subjects,,1
+132,11,物質文化論,2111J,1,コース専門科目　Course Specialized Subjects,,1
+133,11,現代生活デザイン論・演習,3311W,3,専攻教育科目　Specialized Education,,1
+134,11,現代芸術とコミュニケーション演習,3341J,2,専攻教育科目　Specialized Education,,1
+135,11,環境と持続可能性,3221W,1,コース基礎科目　Course Fundamental Subjects,,3
+136,11,環境テクノロジー実習,3821W,2,専攻教育科目　Specialized Education,,1
+137,11,環境人間工学（2019年度以前入学者対象）,3122J,2,専攻教育科目　Specialized Education,,1
+138,11,環境人間工学（2020年度入学者対象）,2141J,1,コース専門科目　Course Specialized Subjects,,1
+139,11,環境保全論,2211J,2,コース専門科目　Course Specialized Subjects,,1
+140,11,環境倫理学,3172J,2,専攻教育科目　Specialized Education,,1
+141,11,環境形成史,3361J,2,専攻教育科目　Specialized Education,,1
+142,11,環境情報論,3671J,2,専攻教育科目　Specialized Education,,1
+143,11,環境文化財論,3363J,2,専攻教育科目　Specialized Education,,1
+144,11,環境材料論Ⅰ,2521J,1,コース専門科目　Course Specialized Subjects,,1
+145,11,環境材料論Ⅱ,2522J,1,コース専門科目　Course Specialized Subjects,,1
+146,11,環境構法論,2341J,2,コース専門科目　Course Specialized Subjects,,1
+147,11,環境生理学,2142J,1,コース専門科目　Course Specialized Subjects,,1
+148,11,環境社会デザイン論,2221W,1,コース専門科目　Course Specialized Subjects,,1
+149,11,環境総合プロジェクト,4491W,4,専攻教育科目　Specialized Education,,1
+150,11,環境総合プロジェクトA,4411J,2,専攻教育科目　Specialized Education,,1
+151,11,環境総合プロジェクトB,4412J,2,専攻教育科目　Specialized Education,,1
+152,11,環境設計プロジェクトA,2411J,2,コース基礎科目　Course Fundamental Subjects,,3
+153,11,環境設計プロジェクトB,2412J,2,コース基礎科目　Course Fundamental Subjects,,3
+154,11,環境設計プロジェクトC,2413J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+155,11,環境設計プロジェクトD,2414J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+156,11,環境設計基礎Ⅰ,1231J,1,コース基礎科目　Course Fundamental Subjects,,1
+157,11,環境設計基礎Ⅱ,1412J,1,コース基礎科目　Course Fundamental Subjects,,1
+158,11,環境設計文献講読,3801W,2,専攻教育科目　Specialized Education,,1
+159,11,環境調整システム論,2611J,2,コース専門科目　Course Specialized Subjects,,1
+160,11,環境音響構成,2232J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+161,11,生体情報処理演習,3141J,2,専攻教育科目　Specialized Education,,1
+162,11,生命科学入門Ⅰ,1411J,1,コース基礎科目　Course Fundamental Subjects,,3
+163,11,生活機器造形論・演習,3321J,3,専攻教育科目　Specialized Education,,1
+164,11,生活空間造形論・演習,3331W,3,専攻教育科目　Specialized Education,,1
+165,11,生理人類学,2122J,2,専攻教育科目　Specialized Education,,1
+166,11,画像メディア工学演習,3532J,2,専攻教育科目　Specialized Education,,1
+167,11,画像処理演習,3512J,2,専攻教育科目　Specialized Education,,1
+168,11,画像論演習,3212J,2,専攻教育科目　Specialized Education,,1
+169,11,知的財産論,3231J,2,専攻教育科目　Specialized Education,,1
+170,11,知覚心理学,2431J,2,コース専門科目　Course Specialized Subjects,,1
+171,11,知覚情報処理工学,3522J,2,専攻教育科目　Specialized Education,,1
+172,11,社会とデザイン,2032J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+173,11,社会と多様性,1211W,1,コース基礎科目　Course Fundamental Subjects,,1
+174,11,福祉人間工学（2019年度以前入学者対象）,2121J,2,専攻教育科目　Specialized Education,,1
+175,11,福祉人間工学（2020年度入学者対象）,2131J,1,コース専門科目　Course Specialized Subjects,,1
+176,11,科学技術とデザイン,2034J,1,デザインリテラシー科目　Design Literacy Subjects,,1
+177,11,空間デザイン実習,2811J,2,コース基礎科目　Course Fundamental Subjects,,3
+178,11,空間情報分析実習Ⅰ,2821J,1,コース基礎科目　Course Fundamental Subjects,,3
+179,11,空間情報分析実習Ⅱ,2822J,1,コース基礎科目　Course Fundamental Subjects,,3
+180,11,統計・データ科学,3031J,2,専攻教育科目　Specialized Education,,1
+181,11,緑地環境実習,2851J,1,コース専門科目　Course Specialized Subjects,,1
+182,11,緑地環境設計論,2221J,2,コース専門科目　Course Specialized Subjects,,1
+183,11,聴能形成Ⅰ,1211J,1,コース演習科目 (PBL)　Course Seminar Subjects,,1
+184,11,聴能形成Ⅱ,2211J,1,コース演習科目 (PBL)　Course Seminar Subjects,,1
+185,11,聴覚心理学,2112W,2,コース基礎科目　Course Fundamental Subjects,,3
+186,11,聴覚生理学,2111W,2,コース基礎科目　Course Fundamental Subjects,,3
+187,11,聴覚認知論,3231J,2,専攻教育科目　Specialized Education,,1
+188,11,色彩学,2422J,2,コース専門科目　Course Specialized Subjects,,1
+189,11,色彩学演習,3142J,2,専攻教育科目　Specialized Education,,1
+190,11,芸術情報プロジェクト演習,3813W,2,専攻教育科目　Specialized Education,,1
+191,11,芸術情報総合演習,3814W,2,専攻教育科目　Specialized Education,,1
+192,11,芸術文化施設論,3214J,2,専攻教育科目　Specialized Education,,1
+193,11,芸術文化環境論,2221J,2,専攻教育科目　Specialized Education,,1
+194,11,芸術文化論,2531J,1,コース専門科目　Course Specialized Subjects,,1
+195,11,芸術表現論,2121W,1,コース専門科目　Course Specialized Subjects,,1
+196,11,芸術論,2231J,2,コース専門科目　Course Specialized Subjects,,1
+197,11,行動生理学（2019年度以前入学者対象）,2123J,2,専攻教育科目　Specialized Education,,1
+198,11,行動生理学（2020年度入学者対象）,2152J,1,コース専門科目　Course Specialized Subjects,,1
+199,11,表象文化論,2531J,1,コース専門科目　Course Specialized Subjects,,1
+200,11,西洋美術史,2141J,1,コース専門科目　Course Specialized Subjects,,1
+201,11,西洋音楽史,2323J,2,コース専門科目　Course Specialized Subjects,,1
+202,11,視覚心理学,2421J,2,コース専門科目　Course Specialized Subjects,,1
+203,11,視覚心理学演習,3112J,2,専攻教育科目　Specialized Education,,1
+204,11,視覚芸術基礎,2121W,1,コース基礎科目　Course Fundamental Subjects,,3
+205,11,視覚芸術学プロジェクト,3831J,2,専攻教育科目　Specialized Education,,1
+206,11,言葉とコミュニケーション,2411J,2,コース専門科目　Course Specialized Subjects,,1
+207,11,計画設計プロジェクト演習,3341W,2,専攻教育科目　Specialized Education,,1
+208,11,設備計画論,3691J,2,専攻教育科目　Specialized Education,,1
+209,11,設計多変量解析,2532J,2,専攻教育科目　Specialized Education,,1
+210,11,質的社会調査法,2241J,1,コース専門科目　Course Specialized Subjects,,1
+211,11,身体表現演習Ⅰ,1121J,1,コース専門科目　Course Specialized Subjects,,1
+212,11,身体表現演習Ⅱ,2122J,1,コース専門科目　Course Specialized Subjects,,1
+213,11,輪講,4861J,2,専攻教育科目　Specialized Education,,3
+214,11,造形表現演習,2561J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+215,11,造形論,3122J,2,専攻教育科目　Specialized Education,,1
+216,11,都市プロジェクト,3492W,4,専攻教育科目　Specialized Education,,3
+217,11,都市環境設計論,2321J,2,コース専門科目　Course Specialized Subjects,,1
+218,11,銀塩写真演習,3491J,2,専攻教育科目　Specialized Education,,1
+219,11,電子工学,2313J,2,コース専門科目　Course Specialized Subjects,,1
+220,11,電気実験,3611J,1,専攻教育科目　Specialized Education,,3
+221,11,電気工学,2312J,2,コース専門科目　Course Specialized Subjects,,1
+222,11,非線形振動論,3221J,2,専攻教育科目　Specialized Education,,1
+223,11,音声情報学,2341J,2,コース専門科目　Course Specialized Subjects,,1
+224,11,音文化論,2113J,2,コース基礎科目　Course Fundamental Subjects,,3
+225,11,音文化論演習,2324J,2,コース専門科目　Course Specialized Subjects,,1
+226,11,音楽学,3311J,2,専攻教育科目　Specialized Education,,1
+227,11,音楽理論表現演習,2221J,2,コース演習科目 (PBL)　Course Seminar Subjects,,3
+228,11,音響プログラミング演習,2212J,2,コース演習科目 (PBL)　Course Seminar Subjects,,1
+229,11,音響信号処理,2116J,2,コース基礎科目　Course Fundamental Subjects,,3
+230,11,音響実験Ⅰ,3811J,3,専攻教育科目　Specialized Education,,3
+231,11,音響実験Ⅱ,3821J,3,専攻教育科目　Specialized Education,,3
+232,11,音響情報工学,3621J,2,専攻教育科目　Specialized Education,,1
+233,11,音響情報工学演習,3841J,2,専攻教育科目　Specialized Education,,1
+234,11,音響構成,4411J,4,専攻教育科目　Specialized Education,,1
+235,11,音響機器論,2332J,2,コース専門科目　Course Specialized Subjects,,1
+236,11,音響理論演習Ⅰ（2019年度以前入学者対象）,2111J,3,専攻教育科目　Specialized Education,,3
+237,11,音響理論演習Ⅰ（2020年度入学者対象）,2114J,2,コース基礎科目　Course Fundamental Subjects,,3
+238,11,音響理論演習Ⅱ（2019年度以前入学者対象）,2112J,3,専攻教育科目　Specialized Education,,3
+239,11,音響理論演習Ⅱ（2020年度入学者対象）,2115J,2,コース基礎科目　Course Fundamental Subjects,,3
+240,11,騒音環境学,3521J,2,専攻教育科目　Specialized Education,,1

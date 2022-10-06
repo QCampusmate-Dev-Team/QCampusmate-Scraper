@@ -85,7 +85,8 @@ function courseSyllabusScrapeFn(courseid: number, data: string | cheerio.AnyNode
   
   var courseDetail: CourseDetail | Syllabus;
   var coursedetailPartial: CourseDetailPartialsT;
-  var constructorFn: DetailPartialConstructors, title: string;
+  var constructorFn: DetailPartialConstructors = undefined, 
+      title: string = '';
 
   const rows = $('tbody[class="root-tbody"]>tr', $(detail));
   const firstRowText = $(rows.get(0)).text().trim();
@@ -108,7 +109,7 @@ function courseSyllabusScrapeFn(courseid: number, data: string | cheerio.AnyNode
           }
           // Switch to another constructor
           constructorFn = detailContructors[title];
-          coursedetailPartial = new constructorFn();
+          if(constructorFn) coursedetailPartial = new constructorFn();
           log('start building', constructorFn)
         } else if ($(childrenTds).has('table')) { // if row has one child and has table, stringify the table
           if(constructorFn === CourseObjectiveDetail) {
@@ -192,8 +193,8 @@ const testCourseId = [
   21705030 // 2021 Design Pitching Skills 
 ]
 
-import courseids2021 from '../../local-files/course-id-2021.json';
-import courseids2020 from '../../local-files/course-id-2020.json';
+import courseids2021 from '../../course-ids/course-id-2021.json';
+import courseids2020 from '../../course-ids/course-id-2020.json';
 
 const courseIDS = {
   2020: courseids2020,
@@ -202,16 +203,12 @@ const courseIDS = {
 
 // const school = 'KEG'; //'KEG' 'ECO' 'ENG' 'EDU-TEP' 'DES' 
 function scrapeAllCourseDataIn2022ForOneSchool(args: string) {
-  if (!args) {
-    console.error('Unexpected empty input!! Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT');
+  let inputs;
+  if (!args || !((inputs = args.split(' ')) && inputs.length == 3)) {
+    console.error('Unexpected input!! Exactly 3 input arguments are required. \nUsage: echo "<year> <school> <file-name>" | node PATH_TO_THIS_SCRIPT');
     return;
   };
 
-  let inputs;
-  if (!((inputs = args.split(' ')) && inputs.length == 3)) {
-    console.error('Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT')
-    return;
-  } 
   const [year, school, filename] = inputs;
   if (!(year in courseIDS)) {
     console.error(`Unexpected year input: ${year}. Key ${year} does not exist in courseID cache!!`);
