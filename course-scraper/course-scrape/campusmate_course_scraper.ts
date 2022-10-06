@@ -1,5 +1,6 @@
 /* eslint-disable */
 import * as cheerio from 'cheerio';
+
 import { CourseMain, Course, isCourseDetail, Syllabus, CourseDetail, CourseObjective, CourseObjectiveDetail, CourseImplementationDetail, CourseGradingDetail, CourseContactsDetail, DetailPartialConstructors} from './course-types'
 import trimInbetweenNewline from './trimInbetweenNewline'
 
@@ -7,6 +8,7 @@ const axios = require('axios');
 // const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const fs = require('fs');
+const fsPath = require('fs-path');
 
 // type alias
 type CourseDetailPartialsT = CourseObjectiveDetail |
@@ -73,7 +75,7 @@ function courseSyllabusScrapeFn(courseid: number, data: string | cheerio.AnyNode
   }
   log('CourseMain done building ✅\n');
 
-  /** 
+
   // get CourseDetail or Syllabus
   const tables = $("table.syllabus_detail", detail);
   detail = tables[0];
@@ -132,12 +134,12 @@ function courseSyllabusScrapeFn(courseid: number, data: string | cheerio.AnyNode
     for (let i = 0, row = content_rows[i]; i < content_rows.length; row = content_rows[++i]){
       let childrenTds = $(row).children('.content');
       // Syllabus format has not title rows. So just set the first and third td as key and value and we are done
+      console.log(`On ${childrenTds.first().text().trim()}`);
       courseDetail!.setKV(childrenTds.first().text().trim(), childrenTds.last(), $)
     }
   }
-  */
 
-  course = new Course(courseMain, undefined);
+  course = new Course(courseMain, courseDetail);
   log(JSON.stringify(course, null, 2));
   log('\n');
   // JSON.stringify(course, null, 2)
@@ -146,8 +148,8 @@ function courseSyllabusScrapeFn(courseid: number, data: string | cheerio.AnyNode
 
 
 
-async function fetchOne(cid: number, done: boolean): Promise<{ value: Course | null | undefined, done: boolean }> {
-  const courseURL = `https://ku-portal.kyushu-u.ac.jp/campusweb/slbssbdr.do?value(risyunen)=2021&value(semekikn)=1&value(kougicd)=${cid}&value(crclumcd)=ZZ`;
+async function fetchOne(year: number, cid: number, done: boolean): Promise<{ value: Course | null | undefined, done: boolean }> {
+  const courseURL = `https://ku-portal.kyushu-u.ac.jp/campusweb/slbssbdr.do?value(risyunen)=${year}&value(semekikn)=1&value(kougicd)=${cid}&value(crclumcd)=ZZ`;
                   
   return new Promise((resolve, reject) => {
     axios({
@@ -191,19 +193,40 @@ const testCourseId = [
 ]
 
 import courseids2021 from '../../local-files/course-id-2021.json';
+import courseids2020 from '../../local-files/course-id-2020.json';
 
+const courseIDS = {
+  2020: courseids2020,
+  2021: courseids2021
+}
 
 // const school = 'KEG'; //'KEG' 'ECO' 'ENG' 'EDU-TEP' 'DES' 
-function scrapeAllCourseDataIn2022ForOneSchool(school: string) {
+function scrapeAllCourseDataIn2022ForOneSchool(args: string) {
+  if (!args) {
+    console.error('Unexpected empty input!! Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT');
+    return;
+  };
+
+  let inputs;
+  if (!((inputs = args.split(' ')) && inputs.length == 3)) {
+    console.error('Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT')
+    return;
+  } 
+  const [year, school, filename] = inputs;
+  if (!(year in courseIDS)) {
+    console.error(`Unexpected year input: ${year}. Key ${year} does not exist in courseID cache!!`);
+    return;
+  }
+
   const coursesIterable = { 
     [Symbol.asyncIterator]() {
       let i = 0;
       return {
         async next() {
-          const done = i === courseids2021[school].length; // iterable is able to produce next value
+          const done = i === courseIDS[year][school].length; // iterable is able to produce next value
           log(`# of processing: ${i + 1}, start...`)
           try {
-            const result = await fetchOne(courseids2021[school][i++], done)
+            const result = await fetchOne(year, courseIDS[year][school][i++], done)
             return result;
           } catch (err) {
             return { value: err, done: done }
@@ -218,12 +241,14 @@ function scrapeAllCourseDataIn2022ForOneSchool(school: string) {
     var courseData: Array<Course | null | undefined> = [];
 
     var i = 0;
+    var count = 0;
     for await (const course of coursesIterable) {
       courseData.push(course);
-      if (i++ >= 200) {
-        const fn = `../data/${school}-2021-courses-augmented-${Math.floor(i / 200)}.json`;
+      count++;
+      if(++i >= 200 || count == courseIDS[year][school].length) { // save to file every 200 courses
+        const fn = `../data/${year}/${school}-${filename}-${Math.floor(count / 201)}.json`;
         log(`Saving results to file: ${fn}`);
-        fs.writeFileSync(fn, JSON.stringify(courseData, null, 2));
+        fsPath.writeFileSync(fn, JSON.stringify(courseData, null, 2));
         log(`Saved ${i} courses ✅`);
 
         i = 0;
@@ -231,10 +256,8 @@ function scrapeAllCourseDataIn2022ForOneSchool(school: string) {
       }
     }
     log(CourseMain.subjectCategoryMap);
-  
     
-    
-    log(`Saved ${courseData.length} courses in total ✅`)
+    log(`Saved ${count} courses in total ✅`)
   })();
 }
 

@@ -86,6 +86,7 @@ export class CourseMain {
   updated_at: Date | undefined; //更新日付
   instructors: string[] | undefined; // 担当教員
   category: Category; //授業科目区分;
+  school_name: string | undefined; //学部カテゴリ
 	lang: string | undefined; // 使用言語
 	target_year: string | undefined; // 対象学年; use enum?
   elecCompul: Elec; // 必修選択
@@ -163,6 +164,10 @@ export class CourseMain {
           break;
           }
 
+          case "学部カテゴリ":
+            this.school_name = value;
+          break;
+
           case "使用言語":
             this.lang = value;
           break;
@@ -232,11 +237,11 @@ export class CourseMain {
           break;
           
           default:
-            if (['学部カテゴリ'].includes(key)) {
-              console.warn(`データフィールド ${key} を取得しない方針でございます。${key}: ${value}`);
-            } else {
-              console.warn(`Unknown key type in CourseMain.setKV. key: ${key}, value: ${value}`);
-            }
+            // if (['学部カテゴリ'].includes(key)) {
+            //   console.warn(`データフィールド ${key} を取得しない方針でございます。${key}: ${value}`);
+            // } else {
+            console.warn(`Unknown key type in CourseMain.setKV. key: ${key}, value: ${value}`);
+
           break;          
         }
       }
@@ -286,7 +291,7 @@ interface SyllabusSchedule {
 export class Syllabus extends CourseDetailPartial{
 	outline: HTML_Table; //授業概要
 	keywords: string[][] | undefined; //キーワード
-  courseTypeItem: string[] | undefined; //授業形態（項目）
+  courseTypeItem: string[] | string | undefined; //授業形態（項目）
   courseTypeContent: string | undefined; //授業形態（内容）
   courseMaterial: string | undefined; //使用する教材等
   prerequisites: string | undefined; //履修条件等
@@ -338,14 +343,17 @@ export class Syllabus extends CourseDetailPartial{
 
   setKV(key: string, ctx:  cheerio.BasicAcceptedElems<cheerio.AnyNode>, $: cheerio.CheerioAPI):void {
     key = key.trim()
+    console.log(`Setting field ${key}`);
     if (Syllabus.skipList.includes(key)){
       console.info(`Field ${key} is configured to be skipped in this run.`)
     } else {
       if (key === 'キーワード') {
-        let jp_en = trimInbetweenNewline($('table>tbody>tr>td', ctx).text(), false) as string[];
-        this.keywords = jp_en.map((e) => e.split(/[、,]/)) // split by 、(jp), or ,(en)
+        let jp_en = trimInbetweenNewline($('table>tbody>tr>td', ctx).text(), false);
+        if (jp_en) {
+          this.keywords = (jp_en as string[]).map((e) => e.split(/[、,]/)) // split by 、(jp), or ,(en)
+        }
       } else if (key === '授業形態（項目）') {
-        this.courseTypeItem = trimInbetweenNewline($('table>tbody>tr>td', ctx).text(), false) as string[];
+        this.courseTypeItem = trimInbetweenNewline($('table>tbody>tr>td', ctx).text(), false);
       } else if (['到達目標', '授業計画', '成績評価'].includes(key)) {
         this[Syllabus.keyMap[key]] = trimInbetweenNewline($('table', ctx).html()) as string;
       } else if (key in Syllabus.keyMap) {

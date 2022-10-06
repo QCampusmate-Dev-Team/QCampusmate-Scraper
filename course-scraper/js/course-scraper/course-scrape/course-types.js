@@ -96,6 +96,9 @@ class CourseMain {
                         }
                         break;
                     }
+                    case "学部カテゴリ":
+                        this.school_name = value;
+                        break;
                     case "使用言語":
                         this.lang = value;
                         break;
@@ -160,12 +163,10 @@ class CourseMain {
                         this.more = value;
                         break;
                     default:
-                        if (['学部カテゴリ'].includes(key)) {
-                            console.warn(`データフィールド ${key} を取得しない方針でございます。${key}: ${value}`);
-                        }
-                        else {
-                            console.warn(`Unknown key type in CourseMain.setKV. key: ${key}, value: ${value}`);
-                        }
+                        // if (['学部カテゴリ'].includes(key)) {
+                        //   console.warn(`データフィールド ${key} を取得しない方針でございます。${key}: ${value}`);
+                        // } else {
+                        console.warn(`Unknown key type in CourseMain.setKV. key: ${key}, value: ${value}`);
                         break;
                 }
             }
@@ -207,13 +208,16 @@ class Syllabus extends CourseDetailPartial {
     }
     setKV(key, ctx, $) {
         key = key.trim();
+        console.log(`Setting field ${key}`);
         if (Syllabus.skipList.includes(key)) {
             console.info(`Field ${key} is configured to be skipped in this run.`);
         }
         else {
             if (key === 'キーワード') {
                 let jp_en = (0, trimInbetweenNewline_1.default)($('table>tbody>tr>td', ctx).text(), false);
-                this.keywords = jp_en.map((e) => e.split(/[、,]/)); // split by 、(jp), or ,(en)
+                if (jp_en) {
+                    this.keywords = jp_en.map((e) => e.split(/[、,]/)); // split by 、(jp), or ,(en)
+                }
             }
             else if (key === '授業形態（項目）') {
                 this.courseTypeItem = (0, trimInbetweenNewline_1.default)($('table>tbody>tr>td', ctx).text(), false);

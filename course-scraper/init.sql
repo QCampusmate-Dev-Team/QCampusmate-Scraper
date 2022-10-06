@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS schools;
 DROP TABLE IF EXISTS majors;
 DROP TABLE IF EXISTS courseMetasInMajors;
 DROP TABLE IF EXISTS courseMetas;
+DROP TABLE IF EXISTS courseMetasRaw;
 DROP TABLE IF EXISTS courses;
 DROP TABLE IF EXISTS categories;
 
@@ -25,15 +26,16 @@ CREATE TABLE majors (
 CREATE TABLE courseMetas (
   id SERIAL PRIMARY KEY,
   school_id SMALLSERIAL NOT NULL REFERENCES schools(id), -- "schools.id; NULL is not allowed"
-  major_id SMALLSERIAL REFERENCES majors(id), --"majors.id; NULL is allowed;" 
+  -- major_id SMALLSERIAL REFERENCES majors(id), --"majors.id; NULL is allowed;" 
   subjectName VARCHAR(300), --"e.g. インダストリアルデザイン基礎Ⅰ; NULL is not allowed;"
   subjectCode VARCHAR(20), --"e.g. 1111J in 'DES-IND1111J', NULL is allowed;"
   unit REAL, --"e.g. 1; NULL is not allowed;"
   category TEXT, --"e.g. コース基礎科目　Course Fundamental Subjects"
-  target_year VARCHAR(150), --"e.g. 学部1年　Undergraduate first grade"
-  elecCompul SMALLSERIAL, --"e.g. 選択必修　Required elective, 1=選択, 2=選択必修, 3=必修;"
+  target_year VARCHAR(300), --"e.g. 学部1年　Undergraduate first grade"
+  elecCompul SMALLSERIAL --"e.g. 選択必修　Required elective, 1=選択, 2=選択必修, 3=必修;"
 );
 
+CREATE UNIQUE INDEX courseMetasIdx_smc ON courseMetas (school_id, subjectName);
 
 CREATE TABLE courseMetasRaw (
   id SERIAL PRIMARY KEY,
@@ -43,10 +45,12 @@ CREATE TABLE courseMetasRaw (
   subjectCode VARCHAR(20) DEFAULT '', --"e.g. 1111J in 'DES-IND1111J', NULL is allowed;"
   unit REAL, --"e.g. 1; NULL is not allowed;"
   category TEXT, --"e.g. コース基礎科目　Course Fundamental Subjects"
-  target_year VARCHAR(150), --"e.g. 学部1年　Undergraduate first grade"
+  target_year VARCHAR(200), --"e.g. 学部1年　Undergraduate first grade"
   elecCompul SMALLSERIAL, --"e.g. 選択必修　Required elective, 1=選択, 2=選択必修, 3=必修;"
-  quarter VARCHAR(30) DEFAULT ''
 );
+
+
+\copy coursemetasraw (subjectname, school, major, subjectcode, unit, category, target_year, eleccompul, quarter) FROM './DES-2021_cleaned.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE courseMetasInMajors (
   id SERIAL PRIMARY KEY,
@@ -63,19 +67,18 @@ CREATE TABLE courses (
   instructors VARCHAR(90)[], --"e.g. ['秋田　直繁', '清須美　匡洋'...]"
   lang TEXT, --"e.g. 日本語（J)"
   year SMALLSERIAL, --"e.g. 2021"
-  quarter VARCHAR(30) , --"e.g. 秋学期"
-  day_time VARCHAR(30)[][] , --"e.g. [['火曜日', '3時限']]"
+  quarter VARCHAR(30), --"e.g. 秋学期"
+  day_time VARCHAR(30)[][], --"e.g. [['火曜日', '3時限']]"
   classroom TEXT, --"e.g. 未定/　TBA"
   area VARCHAR(30), --"e.g. 伊都地区"
   more TEXT,
   
   syllabusOrCourseDetail jsonb, --"postgres doesn't care about the internal structure; the naming is for documentation consistency for now, there might be other formats of 'course details'"
   isCourseDetailFormat BOOLEAN, --"e.g. true"
-
+  
   /* "Each course record will have either syllabus or courseDetail, with the other left to be NULL" */
 )
 
 \copy schools (id, code, school) FROM './cleaned/schools.csv' DELIMITER ',' CSV HEADER;
 
 \copy majors (code, major, major_en, school_id) FROM './cleaned/course-database/majors.csv' DELIMITER ',' CSV HEADER;
-

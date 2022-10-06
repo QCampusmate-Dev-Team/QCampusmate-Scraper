@@ -49,6 +49,7 @@ const axios = require('axios');
 // const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const fs = require('fs');
+const fsPath = require('fs-path');
 // Constants
 const detailTitles = [
     '授業科目の目的・目標・履修条件について',
@@ -69,6 +70,7 @@ const log = console.log;
  * @returns Course
  */
 function courseSyllabusScrapeFn(courseid, data) {
+    var _a;
     // returns a course record object
     log(`Reading in course data. Course ID:${courseid}`);
     if (!data)
@@ -97,78 +99,76 @@ function courseSyllabusScrapeFn(courseid, data) {
         }
     }
     log('CourseMain done building ✅\n');
-    /**
     // get CourseDetail or Syllabus
     const tables = $("table.syllabus_detail", detail);
     detail = tables[0];
     $('tbody', detail).first().addClass('root-tbody');
     $('tbody[class="root-tbody"]>tr>td', detail).addClass('content');
-   
-    
-    var courseDetail: CourseDetail | Syllabus;
-    var coursedetailPartial: CourseDetailPartialsT;
-    var constructorFn: DetailPartialConstructors, title: string;
-  
+    var courseDetail;
+    var coursedetailPartial;
+    var constructorFn, title;
     const rows = $('tbody[class="root-tbody"]>tr', $(detail));
     const firstRowText = $(rows.get(0)).text().trim();
-    if (isCourseDetail(firstRowText)) { // course detail is CourseDetail format
-      courseDetail = new CourseDetail();
-      const content_rows = rows.filter(function(i){
-        return i % 2 == 1 || detailTitles.includes($('p', this).text().trim());
-      });
-  
-      for (let i = 0, row = content_rows[i]; i < content_rows.length; row = content_rows[++i]){
-        let childrenTds = $(row).children('.content');
-        // need to switch to a new constructor whenever a new title for detail partial starts,
-        // which is distinguished through the number of tds in a tr, for a new title tr, it has 1 td
-        if (childrenTds.length === 1) {
-          if ((title = $('p', childrenTds)?.text().trim()) in detailContructors){ // if row has one child and is a title, then it's a title row, marking the beginning of a new data type
-            if (coursedetailPartial) {
-              courseDetail.setKV(constructorFn, coursedetailPartial);
-              log(constructorFn, 'done building ✅\n');
-              // log(coursedetailPartial);
+    if ((0, course_types_1.isCourseDetail)(firstRowText)) { // course detail is CourseDetail format
+        courseDetail = new course_types_1.CourseDetail();
+        const content_rows = rows.filter(function (i) {
+            return i % 2 == 1 || detailTitles.includes($('p', this).text().trim());
+        });
+        for (let i = 0, row = content_rows[i]; i < content_rows.length; row = content_rows[++i]) {
+            let childrenTds = $(row).children('.content');
+            // need to switch to a new constructor whenever a new title for detail partial starts, 
+            // which is distinguished through the number of tds in a tr, for a new title tr, it has 1 td
+            if (childrenTds.length === 1) {
+                if ((title = (_a = $('p', childrenTds)) === null || _a === void 0 ? void 0 : _a.text().trim()) in detailContructors) { // if row has one child and is a title, then it's a title row, marking the beginning of a new data type
+                    if (coursedetailPartial) {
+                        courseDetail.setKV(constructorFn, coursedetailPartial);
+                        log(constructorFn, 'done building ✅\n');
+                        // log(coursedetailPartial);
+                    }
+                    // Switch to another constructor
+                    constructorFn = detailContructors[title];
+                    coursedetailPartial = new constructorFn();
+                    log('start building', constructorFn);
+                }
+                else if ($(childrenTds).has('table')) { // if row has one child and has table, stringify the table
+                    if (constructorFn === course_types_1.CourseObjectiveDetail) {
+                        log(`On row ${i} in constructing`, constructorFn.name, 'serializing HTML Table element');
+                        coursedetailPartial.setKV('目標', childrenTds, $);
+                    }
+                    else if (constructorFn === course_types_1.CourseImplementationDetail) {
+                        log(`On row ${i} in constructing`, constructorFn.name, 'serializing HTML Table element');
+                        coursedetailPartial.setKV('スケジュール', childrenTds, $);
+                    }
+                    // log(trimInbetweenNewline($('table', childrenTds).html()))
+                }
             }
-            // Switch to another constructor
-            constructorFn = detailContructors[title];
-            coursedetailPartial = new constructorFn();
-            log('start building', constructorFn)
-          } else if ($(childrenTds).has('table')) { // if row has one child and has table, stringify the table
-            if(constructorFn === CourseObjectiveDetail) {
-              log(`On row ${i} in constructing`, constructorFn.name, 'serializing HTML Table element');
-              coursedetailPartial!.setKV('目標', childrenTds, $)
-            } else if (constructorFn === CourseImplementationDetail) {
-              log(`On row ${i} in constructing`, constructorFn.name, 'serializing HTML Table element');
-              coursedetailPartial!.setKV('スケジュール', childrenTds, $);
+            else {
+                coursedetailPartial.setKV(childrenTds.first().text().trim(), childrenTds.last(), $);
             }
-            // log(trimInbetweenNewline($('table', childrenTds).html()))
-          }
-        } else {
-          coursedetailPartial!.setKV(childrenTds.first().text().trim(), childrenTds.last(), $)
         }
-      }
-      courseDetail.setKV(constructorFn, coursedetailPartial); // for loop ends, and we need to set the last coursedetailPartial
-    } else { // course detail is Syllabus format
-      courseDetail = new Syllabus();
-      const content_rows = rows.filter(function(i){
-        return i % 2 == 0;
-      });
-  
-      for (let i = 0, row = content_rows[i]; i < content_rows.length; row = content_rows[++i]){
-        let childrenTds = $(row).children('.content');
-        // Syllabus format has not title rows. So just set the first and third td as key and value and we are done
-        courseDetail!.setKV(childrenTds.first().text().trim(), childrenTds.last(), $)
-      }
+        courseDetail.setKV(constructorFn, coursedetailPartial); // for loop ends, and we need to set the last coursedetailPartial
     }
-    */
-    course = new course_types_1.Course(courseMain, undefined);
+    else { // course detail is Syllabus format
+        courseDetail = new course_types_1.Syllabus();
+        const content_rows = rows.filter(function (i) {
+            return i % 2 == 0;
+        });
+        for (let i = 0, row = content_rows[i]; i < content_rows.length; row = content_rows[++i]) {
+            let childrenTds = $(row).children('.content');
+            // Syllabus format has not title rows. So just set the first and third td as key and value and we are done
+            console.log(`On ${childrenTds.first().text().trim()}`);
+            courseDetail.setKV(childrenTds.first().text().trim(), childrenTds.last(), $);
+        }
+    }
+    course = new course_types_1.Course(courseMain, courseDetail);
     log(JSON.stringify(course, null, 2));
     log('\n');
     // JSON.stringify(course, null, 2)
     return course;
 }
-function fetchOne(cid, done) {
+function fetchOne(year, cid, done) {
     return __awaiter(this, void 0, void 0, function* () {
-        const courseURL = `https://ku-portal.kyushu-u.ac.jp/campusweb/slbssbdr.do?value(risyunen)=2021&value(semekikn)=1&value(kougicd)=${cid}&value(crclumcd)=ZZ`;
+        const courseURL = `https://ku-portal.kyushu-u.ac.jp/campusweb/slbssbdr.do?value(risyunen)=${year}&value(semekikn)=1&value(kougicd)=${cid}&value(crclumcd)=ZZ`;
         return new Promise((resolve, reject) => {
             axios({
                 method: 'get',
@@ -208,18 +208,38 @@ const testCourseId = [
     21705030 // 2021 Design Pitching Skills 
 ];
 const course_id_2021_json_1 = __importDefault(require("../../local-files/course-id-2021.json"));
+const course_id_2020_json_1 = __importDefault(require("../../local-files/course-id-2020.json"));
+const courseIDS = {
+    2020: course_id_2020_json_1.default,
+    2021: course_id_2021_json_1.default
+};
 // const school = 'KEG'; //'KEG' 'ECO' 'ENG' 'EDU-TEP' 'DES' 
-function scrapeAllCourseDataIn2022ForOneSchool(school) {
+function scrapeAllCourseDataIn2022ForOneSchool(args) {
+    if (!args) {
+        console.error('Unexpected empty input!! Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT');
+        return;
+    }
+    ;
+    let inputs;
+    if (!((inputs = args.split(' ')) && inputs.length == 3)) {
+        console.error('Exactly 3 input arguments are required. \nUsage: echo "<school> <file-name>" node THIS_SCRIPT');
+        return;
+    }
+    const [year, school, filename] = inputs;
+    if (!(year in courseIDS)) {
+        console.error(`Unexpected year input: ${year}. Key ${year} does not exist in courseID cache!!`);
+        return;
+    }
     const coursesIterable = {
         [Symbol.asyncIterator]() {
             let i = 0;
             return {
                 next() {
                     return __awaiter(this, void 0, void 0, function* () {
-                        const done = i === course_id_2021_json_1.default[school].length; // iterable is able to produce next value
+                        const done = i === courseIDS[year][school].length; // iterable is able to produce next value
                         log(`# of processing: ${i + 1}, start...`);
                         try {
-                            const result = yield fetchOne(course_id_2021_json_1.default[school][i++], done);
+                            const result = yield fetchOne(year, courseIDS[year][school][i++], done);
                             return result;
                         }
                         catch (err) {
@@ -233,10 +253,21 @@ function scrapeAllCourseDataIn2022ForOneSchool(school) {
     (() => __awaiter(this, void 0, void 0, function* () {
         var e_1, _a;
         var courseData = [];
+        var i = 0;
+        var count = 0;
         try {
             for (var coursesIterable_1 = __asyncValues(coursesIterable), coursesIterable_1_1; coursesIterable_1_1 = yield coursesIterable_1.next(), !coursesIterable_1_1.done;) {
                 const course = coursesIterable_1_1.value;
                 courseData.push(course);
+                count++;
+                if (i++ >= 200 || count == courseIDS[year][school].length) { // save to file every 200 courses
+                    const fn = `../data/${year}/${school}-${filename}-${Math.floor(count / 200)}.json`;
+                    log(`Saving results to file: ${fn}`);
+                    fsPath.writeFileSync(fn, JSON.stringify(courseData, null, 2));
+                    log(`Saved ${i} courses ✅`);
+                    i = 0;
+                    courseData = [];
+                }
             }
         }
         catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -247,9 +278,7 @@ function scrapeAllCourseDataIn2022ForOneSchool(school) {
             finally { if (e_1) throw e_1.error; }
         }
         log(course_types_1.CourseMain.subjectCategoryMap);
-        log(`Saving results to file: ../data/${school}-2021-courses-augmented.json`);
-        fs.writeFileSync(`../data/${school}-2021-courses-augmented.json`, JSON.stringify(courseData, null, 2));
-        log(`Saved ${courseData.length} courses ✅`);
+        log(`Saved ${count} courses in total ✅`);
     }))();
 }
 function useSTDIN(cb) {
