@@ -197,7 +197,7 @@ import courseids2021 from '../../course-ids/course-id-2021.json';
 import courseids2020 from '../../course-ids/course-id-2020.json';
 
 const courseIDS = {
-  2020: courseids2020,
+  2020: courseids2020, 
   2021: courseids2021
 }
 
@@ -205,7 +205,7 @@ const courseIDS = {
 function scrapeAllCourseDataIn2022ForOneSchool(args: string) {
   let inputs;
   if (!args || !((inputs = args.split(' ')) && inputs.length == 3)) {
-    console.error('Unexpected input!! Exactly 3 input arguments are required. \nUsage: echo "<year> <school> <file-name>" | node PATH_TO_THIS_SCRIPT');
+    console.error('Unexpected input!! E"<year> <school> <file> xactly 3 input arguments are required. \nUsage: echo e-name>" | node PATH_TO_THIS_SCRIPT');
     return;
   };
 
